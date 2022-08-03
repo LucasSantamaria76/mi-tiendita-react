@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Layout } from './views/Layout';
+import './app.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Home } from './views/Home';
+import { Auth } from './views/Auth';
+import { Products } from './views/Products';
 
-function App() {
+/* const RequireAuth = ({ children }) => {
+  if (!localStorage.getItem('user')) {
+    return <Navigate to='/login' replace={true} />;
+  }
+  return children;
+}; */
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/login' element={<Auth />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
