@@ -13,3 +13,9 @@ body {
   min-width: 100vw;
   min-height: 100vh;
 }
+
+img {
+  margin: 0 auto;
+  max-width: 150px;
+  height: auto;
+}
